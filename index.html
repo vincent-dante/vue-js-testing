@@ -7,11 +7,30 @@
   </head>
   <body>
     <div id="app">
-      <ul>
-        <li v-for="todo in todosList" :key="todo.title">
-          {{ todo.title }}
-        </li>
-      </ul>
+      <table border="1px">
+        <tr>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+        <tr v-for="user in userList" :key="user.id">
+          <td>{{ user.name }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <input type="button" value="Edit" v-on:click="edit(user.id)" />
+            <input type="button" value="Delete" />
+          </td>
+        </tr>
+      </table>
+      <div id="form" v-if="formShow">
+        Name: <input type="text" v-model="name" /> Username:
+        <input type="text" v-model="username" /> Email:
+        <input type="text" v-model="email" />
+        <input type="submit" value="Save" />
+        <input type="submit" value="Close" v-on:click="formShow=false" />
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
