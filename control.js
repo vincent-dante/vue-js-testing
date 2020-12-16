@@ -13,8 +13,6 @@ var app = new Vue({
     edit: function (userid) {
       this.formShow = true;
       let x = this.userList.find(({ id }) => id === userid);
-      //console.log(this.userList[id]);
-      console.log(x);
       this.name = x.name;
       this.username = x.username;
       this.email = x.email;
