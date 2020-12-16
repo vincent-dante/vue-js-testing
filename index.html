@@ -28,7 +28,7 @@
         Name: <input type="text" v-model="name" /> Username:
         <input type="text" v-model="username" /> Email:
         <input type="text" v-model="email" />
-        <input type="submit" value="Save" />
+        <input type="submit" value="Save" v-on:click="save" />
         <input type="submit" value="Close" v-on:click="formShow=false" />
       </div>
     </div>
