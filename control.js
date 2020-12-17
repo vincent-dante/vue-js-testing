@@ -40,7 +40,6 @@ var app = new Vue({
     },
     delete_user: function (id) {
       let filterArray = this.userList.filter((user) => user.id !== id);
-      console.log(filterArray);
       this.userList = filterArray;
     }
   },
