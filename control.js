@@ -33,11 +33,15 @@ var app = new Vue({
       }).then((response) => {
         let res = response.data;
         let x = self.userList.find((user) => user.id === self.id);
-
         x.name = res.name;
         x.username = res.username;
         x.email = res.email;
       });
+    },
+    delete_user: function (id) {
+      let filterArray = this.userList.filter((user) => user.id !== id);
+      console.log(filterArray);
+      this.userList = filterArray;
     }
   },
   mounted() {
