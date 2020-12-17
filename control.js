@@ -7,11 +7,21 @@ var app = new Vue({
       name: null,
       username: null,
       email: null,
-      id: null
+      id: null,
+      saveCondi: "add"
     };
   },
   methods: {
+    add_user: function () {
+      this.saveCondi = "add";
+      this.name = null;
+      this.username = null;
+      this.email = null;
+      this.id = null;
+      this.formShow = true;
+    },
     edit: function (userid) {
+      this.saveCondi = "edit";
       this.formShow = true;
       let x = this.userList.find(({ id }) => id === userid);
       this.name = x.name;
@@ -23,7 +33,7 @@ var app = new Vue({
       let self = this;
       axios({
         method: "put",
-        url: "https://jsonplaceholder.typicode.com/posts/1",
+        url: "https://jsonplaceholder.typicode.com/users/1",
         data: {
           id: self.id,
           name: self.name,
@@ -31,11 +41,15 @@ var app = new Vue({
           email: self.email
         }
       }).then((response) => {
-        let res = response.data;
-        let x = self.userList.find((user) => user.id === self.id);
-        x.name = res.name;
-        x.username = res.username;
-        x.email = res.email;
+        if (self.saveCondi === "edit") {
+          let res = response.data;
+          let x = self.userList.find((user) => user.id === self.id);
+          x.name = res.name;
+          x.username = res.username;
+          x.email = res.email;
+        } else {
+          //self.userLista.push({ });
+        }
       });
     },
     delete_user: function (id) {
