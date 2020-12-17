@@ -27,15 +27,16 @@ var app = new Vue({
         data: {
           id: self.id,
           name: self.name,
-          surname: self.username,
+          username: self.username,
           email: self.email
         }
       }).then((response) => {
-        var x = self.userList.find(({ id }) => id === response.id);
-        console.log(x);
-        /*         x.name = response.name;
-        x.username = response.username;
-        x.email = response.email; */
+        let res = response.data;
+        let x = self.userList.find((user) => user.id === self.id);
+
+        x.name = res.name;
+        x.username = res.username;
+        x.email = res.email;
       });
     }
   },
