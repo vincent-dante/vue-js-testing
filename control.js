@@ -48,8 +48,15 @@ var app = new Vue({
           x.username = res.username;
           x.email = res.email;
         } else {
-          //self.userLista.push({ });
+          let z = self.userList.length + 1;
+          self.userList.push({
+            id: z,
+            name: self.name,
+            username: self.username,
+            email: self.email
+          });
         }
+        this.formShow = false;
       });
     },
     delete_user: function (id) {
